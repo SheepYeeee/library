@@ -6,6 +6,6 @@ const apiConfig = {
 };
 
 export default {
-  api: `${apiConfig.protocol}://${apiConfig.host}:${apiConfig.port}/${apiConfig.prefix}`
+  api: `${apiConfig.protocol}://${apiConfig.host}/${apiConfig.prefix}`
   // api: `${apiConfig.protocol}://${apiConfig.host}:${apiConfig.port}/${apiConfig.prefix}`
 };

@@ -58,44 +58,33 @@ export default connect(
 
     };
 
-    componentDidUpdate(prevProps) {
-
-      const {GET_Search} = this.props;
-      const query = new URLSearchParams(this.props.location.search);
-      let title = query.get("title");
-      let page = query.get("page");
-      let payload = {
-        page: page,
-        title: title
-      };
-
-      if (this.state.title !== title) {
-        this.setState({
-          title: title
-        });
-        // 取得書籍
-        GET_Search(payload, null, (loading) => this.setState({loading}));
-      }
-
-    }
 
     // 換頁觸發
     onChange = page => {
       const {title} = this.state;
       const {goToRoute} = this.props;
       goToRoute(`/search?title=${title}&page=${page}`);
+
+      const {GET_Search} = this.props;
+      let payload = {
+        page: page,
+        title: title
+      };
+
+      // 取得書籍
+      GET_Search(payload, null, (loading) => this.setState({loading}));
     };
 
 
     render() {
       const {bookList} = this.props;
       const {loading} = this.state;
-      let testData, cp, lp, perp;
+      let testData, cp, lp, tt;
       if (bookList) {
         testData = bookList.data;
         cp = bookList.current_page;
+        tt = bookList.total;
         lp = bookList.last_page;
-        perp = bookList.perp_page;
       }
 
       return (
@@ -118,11 +107,10 @@ export default connect(
                   <Spin/>
                 </div>
 
-
             }
             <Row>
               <div className='pagination'>
-                <Pagination simple current={cp} defaultPageSize={perp} total={lp} onChange={this.onChange}/>
+                <Pagination current={cp} total={tt} onChange={this.onChange} showSizeChanger={false}/>
               </div>
             </Row>
 

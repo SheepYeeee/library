@@ -58,15 +58,13 @@ export default connect(
 
     render() {
       const {bookList} = this.props;
-      let testData, cp, tt, lp, perp;
+      const {loading} = this.state;
+      let testData, cp, tt, lp;
       if (bookList) {
         testData = bookList.data;
         cp = bookList.current_page;
         tt = bookList.total;
         lp = bookList.last_page;
-        perp = bookList.perp_page;
-        // 路看這 當前頁碼 總頁數
-        console.log(cp, lp);
       }
 
       return (
@@ -79,21 +77,21 @@ export default connect(
               <h3>學習永無止境</h3>
             </div>
 
-            <Row justify="center">
+
               {
-                testData
+                !loading
                   ?
-                  <List
-                    allBooks={testData}
-                  />
+                  <Row justify="center">
+                    <List allBooks={testData} />
+                  </Row>
                   : <div className="spin">
                     <Spin/>
                   </div>
               }
-            </Row>
+
             <Row>
               <div className='pagination'>
-                <Pagination defaultCurrent={cp} total={tt} onChange={this.onChange} showSizeChanger={false}/>
+                <Pagination current={cp} total={tt} onChange={this.onChange} showSizeChanger={false}/>
               </div>
             </Row>
           </Space>
