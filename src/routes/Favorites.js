@@ -28,7 +28,7 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(
-  class extends Component {
+  class FavoriteComponent extends Component {
     state = {
       loading: false,
       perPage: 1

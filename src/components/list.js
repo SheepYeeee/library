@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import _ from 'lodash';
+import _ from "lodash";
 import { Row, Col, Card, Button } from "antd";
-import { SearchOutlined, HeartOutlined } from '@ant-design/icons';
+import { SearchOutlined, HeartOutlined } from "@ant-design/icons";
 import "./list.less";
 const { Meta } = Card;
 
@@ -26,7 +26,7 @@ export default class List extends Component {
             <div className='block'>
               <Row>
                 <Col lg={10} md={8} sm={12} xs={12}>
-                  <img alt={item.title} src={item.img_src} style={{ width: '200px' }} />
+                  <img alt={item.title} src={item.img_src} style={{ width: "200px" }} />
                 </Col>
                 <Col lg={14} md={16} sm={12} xs={12}>
                   <div className='detail'><span className='span'>書名:</span> {item.title}</div>
@@ -46,9 +46,9 @@ export default class List extends Component {
               </Row>
             </div>
           </Col>
-        )
-      })
-    };
+        );
+      });
+    }
 
     return (
       <div className='list'>

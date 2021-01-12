@@ -6,7 +6,6 @@
     "umi",
     "eslint:recommended",
     "plugin:react/recommended"
-    
   ],
   "parserOptions": {
     "ecmaFeatures": {
@@ -21,7 +20,7 @@
   "rules": {
     "indent": [
       "error",
-      "tab"
+      2
     ],
     "linebreak-style": [
       "error",
@@ -29,14 +28,14 @@
     ],
     "quotes": [
       "error",
-      "single"
+      "double"
     ],
     "semi": [
       "error",
       "always"
     ],
     "no-unused-vars": [
-      "warn",
+      0,
       {
         "vars": "all",
         "args": "after-used",
@@ -51,7 +50,6 @@
       "smart-tabs"
     ],
     "react/prop-types": 0,
-    "no-console": 1,
-    "comma-dangle": ["error", "never"]
+    "no-console": 1
   }
 }

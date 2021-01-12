@@ -8,7 +8,7 @@ import {
   Select,
   DatePicker
 } from "antd";
-import moment from 'moment';
+import moment from "moment";
 
 const { Option } = Select;
 
@@ -27,30 +27,30 @@ export default class Recidivism extends Component {
             xs={24} sm={24} md={8} lg={8} xl={6} xxl={6}
             style={{ minHeight: 80 }} key={index}
           >
-          <Form.Item
-            name={item.name}
-            label={item.label}
-            rules={[
-              {
-                required: true,
-                message: "此欄位為必填！"
-              }
-            ]}
-          >
-            <Select
-              placeholder={`請選擇${item.label}`}
-              allowClear
-              style={{ width: '95%' }}
+            <Form.Item
+              name={item.name}
+              label={item.label}
+              rules={[
+                {
+                  required: true,
+                  message: "此欄位為必填！"
+                }
+              ]}
             >
-              {item.value.map((values) => {
-                return (
-                  <Option key={values}>{values}</Option>
-                );
-              })}
+              <Select
+                placeholder={`請選擇${item.label}`}
+                allowClear
+                style={{ width: "95%" }}
+              >
+                {item.value.map((values) => {
+                  return (
+                    <Option key={values}>{values}</Option>
+                  );
+                })}
 
-            </Select>
-          </Form.Item>
-        </Col>
+              </Select>
+            </Form.Item>
+          </Col>
         );
   		});
     }
@@ -77,17 +77,17 @@ export default class Recidivism extends Component {
               htmlType="submit"
               style={{ marginRight: 16 }}
             >查詢
-          </Button>
+            </Button>
             <Button
               onClick={() => {
                 this.form.current.resetFields();
               }}
             >重設
-          </Button>
+            </Button>
           </Form.Item>
         </Col>
       
-        </Form >
+      </Form >
     );
   }
 }

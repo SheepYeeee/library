@@ -5,7 +5,7 @@ import request from "../utils/request";
 // 取得後台書籍
 export const GET_Dashboard = () => {
   const token = localStorage.getItem("token");
-  return request.get(`dashboard/book`, null, {
+  return request.get("dashboard/book", null, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -15,7 +15,7 @@ export const GET_Dashboard = () => {
 // 後台新增書籍
 export const POST_book = (payload) => {
   const token = localStorage.getItem("token");
-  return request.post(`dashboard/book`, payload, {
+  return request.post("dashboard/book", payload, {
     headers: {
       Authorization: `Bearer ${token}`,
     },

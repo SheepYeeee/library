@@ -1,5 +1,5 @@
 import { message } from "antd";
-import { setToken, delToken } from '../utils/localstorage';
+import { setToken, delToken } from "../utils/localstorage";
 import {
   POST_Logout,
   POST_Login,
@@ -24,7 +24,7 @@ export default {
         yield put({ type: "SAVE_MemberInfo", payload: response });
         if (response.code === 200) {
           message.success("登入成功");
-          setToken(response.data.access_token)
+          setToken(response.data.access_token);
 
           yield put({
             type: "global/goToRoute",

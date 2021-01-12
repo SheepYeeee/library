@@ -44,7 +44,7 @@ export const GET_Book = (isbn) => {
 // 加一個帶token的範例
 export const POST_WithToken = () => {
   const token = localStorage.getItem("token");
-  return request.post(`/token`, null, {
+  return request.post("/token", null, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -53,7 +53,7 @@ export const POST_WithToken = () => {
 
 // 加一個帶form-data的範例
 export const POST_WithFormData = () => {
-  return request.post(`/token`, null, {
+  return request.post("/token", null, {
     headers: {
       "Content-Type": "multipart/form-data",
     },
@@ -63,7 +63,7 @@ export const POST_WithFormData = () => {
 // 加一個兩個都帶的範例
 export const POST_WithTokenAndFormData = () => {
   const token = localStorage.getItem("token");
-  return request.post(`/token`, null, {
+  return request.post("/token", null, {
     headers: {
       Authorization: `Bearer ${token}`,
       "Content-Type": "multipart/form-data",

@@ -64,9 +64,9 @@ export default {
         const response = yield call(PUT_book, payload);
         message.success(response.msg);
 
-         // 取得書籍列表
-         const response2 = yield call(GET_Dashboard, payload);
-         yield put({ type: "SAVE_List", payload: response2.data });
+        // 取得書籍列表
+        const response2 = yield call(GET_Dashboard, payload);
+        yield put({ type: "SAVE_List", payload: response2.data });
 
         if (loading) {
           loading(false);

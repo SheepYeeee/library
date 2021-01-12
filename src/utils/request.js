@@ -35,16 +35,16 @@ function call(_path, _method, _params = {}, _extendOption = {}) {
   };
 
   switch (_.toUpper(_method)) {
-    case "PUT":
-    case "POST":
-    case "PATCH":
-      option.data = _params;
-      break;
-    case "GET":
-      option.params = _params;
-      break;
-    default:
-      break;
+  case "PUT":
+  case "POST":
+  case "PATCH":
+    option.data = _params;
+    break;
+  case "GET":
+    option.params = _params;
+    break;
+  default:
+    break;
   }
 
   option = {
@@ -57,13 +57,13 @@ function call(_path, _method, _params = {}, _extendOption = {}) {
     .then(checkStatus)
     .then(responseData)
     .catch((error) => {
-			if(error.response.code === 401){
-				message.error('尚未登入，需登入會員才能進行該動作');
-			}else{
-				message.error(`請求錯誤，${ error.response.data.msg }`);
-			}
-			return error; 
-		});
+      if(error.response.code === 401){
+        message.error("尚未登入，需登入會員才能進行該動作");
+      }else{
+        message.error(`請求錯誤，${ error.response.data.msg }`);
+      }
+      return error; 
+    });
 }
 
 export default {

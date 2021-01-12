@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import _ from 'lodash';
+import _ from "lodash";
 import PropTypes from "prop-types";
 import echarts from "echarts/lib/echarts";
 import "echarts/lib/chart/bar";
@@ -8,9 +8,9 @@ import "echarts/lib/component/title";
 import "echarts/lib/component/tooltip";
 import "echarts/lib/component/toolbox";
 import "echarts/lib/component/legend";
-import 'echarts/lib/component/markPoint';
-import 'echarts/lib/component/markLine';
-import 'echarts/lib/component/dataZoom';
+import "echarts/lib/component/markPoint";
+import "echarts/lib/component/markLine";
+import "echarts/lib/component/dataZoom";
 
 export default class MixChart extends Component {
   componentDidMount = () => {
@@ -26,11 +26,11 @@ export default class MixChart extends Component {
     // 繪製圖表
     myChart.setOption({
       tooltip: {
-        trigger: 'axis',
+        trigger: "axis",
         axisPointer: {
-            type: 'cross',
-            crossStyle: {
-            color: '#999'
+          type: "cross",
+          crossStyle: {
+            color: "#999"
           }
         }
       },
@@ -41,17 +41,17 @@ export default class MixChart extends Component {
         show: true,
         feature: {
           restore: { show: true },
-          magicType: {show: true, type: ['line', 'bar']},
+          magicType: {show: true, type: ["line", "bar"]},
           saveAsImage: {
             show: true,
-            type: 'jpg',
+            type: "jpg",
           }
         }
       },
       dataZoom: [
         {
           show: true,
-          type: 'slider',
+          type: "slider",
           zoomOnMouseWheel: true,
           start: 0,
           end: 100,
@@ -59,7 +59,7 @@ export default class MixChart extends Component {
       ],
       xAxis: [
         {
-          type: 'category',
+          type: "category",
           name: this.props.axis.x,
           data: this.props.data.x
         }
@@ -67,7 +67,7 @@ export default class MixChart extends Component {
       yAxis: [
         {
           name: this.props.axis.y,
-          type: 'value',
+          type: "value",
         }
       ],
       series: this.props.config

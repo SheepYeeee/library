@@ -1,6 +1,6 @@
 
-import dva from 'dva';
-import './index.less';
+import dva from "dva";
+import "./index.less";
 
 
 // 1. Initialize
@@ -16,7 +16,7 @@ app.model(require("./models/auth").default);
 app.model(require("./models/book").default);
 app.model(require("./models/dashboard").default);
 // 4. Router
-app.router(require('./router').default);
+app.router(require("./router").default);
 
 // 5. Start
-app.start('#root');
+app.start("#root");

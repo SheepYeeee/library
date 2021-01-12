@@ -98,7 +98,7 @@ export default {
 
         // 取得書籍
         const response = yield call(GET_Book, payload);
-        yield put({ type: 'SAVE_Book', payload: response.data });
+        yield put({ type: "SAVE_Book", payload: response.data });
 
         if (loading) { loading(false); }
         if (callback) { callback(); }

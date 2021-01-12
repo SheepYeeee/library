@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Switch } from "dva/router";
 import GlobalLayout from "../layout/GlobalLayout";
 
-export default class extends Component {
+export default class AppSwitchComponent extends Component {
   render() {
     const { children } = this.props;
     return (
