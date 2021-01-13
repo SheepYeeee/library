@@ -68,21 +68,22 @@ export default connect(
               <h3>最愛清單</h3>
             </div>
 
-            <Row justify="center">
+
               {
                 !loading
                   ?
+                  <Row justify="center">
                   <List
                     goToRoute = {(payload) => {
                       goToRoute(payload);
                     }}
                     allBooks={this.testData}
-                  />
+                  /></Row>
                   : <div className="spin">
                     <Spin />
                   </div>
               }
-            </Row>
+
 
 
 

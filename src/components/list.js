@@ -25,10 +25,10 @@ export default class List extends Component {
           <Col key={index} lg={12} md={24} sm={24} xs={24} >
             <div className='block'>
               <Row>
-                <Col lg={10} md={8} sm={12} xs={12}>
+                <Col lg={10} md={8} sm={24} xs={24}>
                   <img alt={item.title} src={item.img_src} style={{ width: "200px" }} />
                 </Col>
-                <Col lg={14} md={16} sm={12} xs={12}>
+                <Col lg={14} md={16} sm={24} xs={24}>
                   <div className='detail'><span className='span'>書名:</span> {item.title}</div>
                   <div className='detail'><span className='span'>作者:</span> {item.author}</div>
                   <div className='detail'><span className='span'>isbn:</span> {item.isbn}</div>
