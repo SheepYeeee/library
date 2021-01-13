@@ -57,7 +57,7 @@ export default connect(
 
 
     render() {
-      const {bookList} = this.props;
+      const {bookList, goToRoute} = this.props;
       const {loading} = this.state;
       let testData, cp, tt, lp;
       if (bookList) {
@@ -82,7 +82,11 @@ export default connect(
                 !loading
                   ?
                   <Row justify="center">
-                    <List allBooks={testData} />
+                    <List
+                    goToRoute = {(payload) => {
+                      goToRoute(payload);
+                    }}
+                    allBooks={testData} />
                   </Row>
                   : <div className="spin">
                     <Spin/>

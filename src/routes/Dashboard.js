@@ -33,7 +33,10 @@ const mapDispatchToProps = dispatch => {
     },
     Del_book(payload, callback, loading) {
       dispatch({type: "dashboard/Del_book", payload, callback, loading});
-    }
+    },
+    goToRoute(payload) {
+      dispatch({ type: "global/goToRoute", payload });
+    },
   };
 };
 
@@ -100,12 +103,18 @@ export default connect(
         title: "操作",
         dataIndex: "isbn",
         render: (dataIndex) => <div className='actions' id={dataIndex}>
-          <a href={"/#/book/" + dataIndex} target="_blank" rel="noreferrer"><Button primary>查看</Button></a>
+          <a onClick={this.goBook} target="_blank" rel="noreferrer"><Button primary>查看</Button></a>
           <Button className='btns' type="primary" onClick={() => this.showEditModal(dataIndex)}>編輯 </Button>
           <Button className='btns' type="primary" danger onClick={() => this.showDeleteModal(dataIndex)}>刪除 </Button>
         </div>
       }
     ];
+
+    // 前往書籍
+    goBook = (dataIndex) => {
+      const { goToRoute } = this.props;
+      goToRoute(`/book/${dataIndex}`);
+    }
 
 
     // 篩選條件

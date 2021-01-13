@@ -60,32 +60,33 @@ export default connect(
       POST_Logout(null, (loading) => this.setState({ loading }));
     }
 
-    // 下拉式選單
-    menu = (
-      <Menu >
-        <Menu.Item key="1" icon={<HeartOutlined />}>
-          <a href='/#/favorites'>最愛書籍</a>
-        </Menu.Item>
-        <Menu.Item key="2" icon={<LogoutOutlined />}>
-          <a onClick={this.onLogout}>登出</a>
-        </Menu.Item>
-      </Menu>
-    );
 
     render() {
-      const { children, memberInfo } = this.props;
+      const { children, memberInfo, goToRoute } = this.props;
       const { loading } = this.state;
       let name;
       if (memberInfo) {
         name = memberInfo.name;
+
       }
+      // 下拉式選單
+      let menu = (
+        <Menu >
+          <Menu.Item key="1" icon={<HeartOutlined />}>
+            <a onClick={() => goToRoute('/favorites')}>最愛書籍</a>
+          </Menu.Item>
+          <Menu.Item key="2" icon={<LogoutOutlined />}>
+            <a onClick={this.onLogout}>登出</a>
+          </Menu.Item>
+        </Menu>
+      );
 
       return (
         <Layout className="layout">
           {!loading ?
             <div>
               <Header className='header'>
-                <div className="logo"><a href='/#/index/1' style={{ color: "rgb(244 177 184)" }}>圖書資訊系統</a></div>
+                <div className="logo"><a onClick={() => goToRoute('/index/1')} style={{ color: "rgb(244 177 184)" }}>圖書資訊系統</a></div>
                 <Row gutter={{ lg: 24, md: 12, sm: 6, xs: 3 }} justify="space-between">
 
                   <Col lg={22} md={22} sm={20} xs={20} style={{ marginTop: 15 }}>
@@ -107,7 +108,7 @@ export default connect(
 
 
                   <Col lg={2} md={2} sm={4} xs={4}>
-                    <Dropdown placement="bottomCenter" arrow overlay={this.menu}>
+                    <Dropdown placement="bottomCenter" arrow overlay={menu}>
                       <Avatar style={{ backgroundColor: "#CA8EFF" }} >{name}</Avatar>
                     </Dropdown>
                   </Col>

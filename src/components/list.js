@@ -15,7 +15,7 @@ export default class List extends Component {
   }
 
   render() {
-    const { allBooks } = this.props;
+    const { allBooks, goToRoute } = this.props;
 
     // 取得所有專案並塞資料
     let data;
@@ -36,7 +36,7 @@ export default class List extends Component {
                   <div className='detail'><span className='span'>出版日期:</span> {item.publication_date}</div>
                   <div className='detail intro' ><span className='span'>簡介:</span> {item.summary}</div>
                   <Col>
-                    <a href={"/#/book/" + item.isbn}>
+                    <a  onClick={ () => goToRoute(`/book/${item.isbn}`)}>
                       <Button type="primary" htmlType="submit">
                         查看詳細
                       </Button>

@@ -14,6 +14,9 @@ const mapDispatchToProps = (dispatch) => {
     POST_Register(payload, callback, loading) {
       dispatch({ type: "auth/POST_Register", payload, callback, loading });
     },
+    goToRoute(payload) {
+      dispatch({ type: "global/goToRoute", payload });
+    },
   };
 };
 
@@ -53,7 +56,7 @@ export default connect(
 
     render() {
       const { loading } = this.state;
-
+      const { goToRoute } = this.props;
       return (
         <div id="login">
           {!loading ? (
@@ -66,7 +69,7 @@ export default connect(
                 className="loginForm"
               >
                 <p className="title">
-                  <a href="/#/" className="webTitle">
+                  <a onClick={() => goToRoute('/index/1')} className="webTitle">
                     圖書資訊系統
                   </a>
                   <br />
@@ -126,7 +129,7 @@ export default connect(
                   </Button>
                 </Form.Item>
                 <p>
-                  已有會員？ <a href="/#/login">去登入</a>
+                  已有會員？ <a onClick={() => goToRoute('/login')}>去登入</a>
                 </p>
               </Form>
             </Layout>

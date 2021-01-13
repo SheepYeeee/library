@@ -77,7 +77,7 @@ export default connect(
 
 
     render() {
-      const {bookList} = this.props;
+      const {bookList, goToRoute} = this.props;
       const {loading} = this.state;
       let testData, cp, lp, tt;
       if (bookList) {
@@ -101,7 +101,11 @@ export default connect(
               !loading ?
                 <Row justify="center">
                   <h4>以下是您的搜尋結果</h4>
-                  <List allBooks={testData}/>
+                  <List
+                    goToRoute = {(payload) => {
+                      goToRoute(payload);
+                    }}
+                    allBooks={testData}/>
                 </Row>
                 : <div className="spin">
                   <Spin/>

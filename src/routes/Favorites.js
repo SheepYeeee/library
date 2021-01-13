@@ -21,6 +21,9 @@ const mapDispatchToProps = dispatch => {
     GET_Favorite(payload, callback, loading) {
       dispatch({ type: "book/GET_Favorite", payload, callback, loading });
     },
+    goToRoute(payload) {
+      dispatch({ type: "global/goToRoute", payload });
+    },
   };
 };
 
@@ -48,8 +51,8 @@ export default connect(
 
 
     render() {
-      const { favoriteList } = this.props;
-      const { loading } = this.props;
+      const { favoriteList, goToRoute } = this.props;
+      const { loading } = this.state;
 
       if (favoriteList) {
         this.testData = favoriteList.data;
@@ -70,6 +73,9 @@ export default connect(
                 !loading
                   ?
                   <List
+                    goToRoute = {(payload) => {
+                      goToRoute(payload);
+                    }}
                     allBooks={this.testData}
                   />
                   : <div className="spin">

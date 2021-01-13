@@ -20,6 +20,9 @@ const mapDispatchToProps = dispatch => {
     POST_Login(payload, callback) {
       dispatch({ type: "auth/POST_Login", payload, callback });
     },
+    goToRoute(payload) {
+      dispatch({ type: "global/goToRoute", payload });
+    },
   };
 };
 
@@ -59,6 +62,8 @@ export default connect(
           console.log("Failed:", errorInfo);
         };
 
+
+
         componentDidMount = () => {
         }
 
@@ -66,7 +71,7 @@ export default connect(
 
         render() {
           const {loading} = this.state;
-
+          const { goToRoute } = this.props;
 
           return (
             <div id="login">
@@ -78,7 +83,7 @@ export default connect(
                   onFinishFailed={this.onFinishFailed}
                   className='loginForm'>
                   <p className='title'>
-                    <a href='/#/' className='webTitle'>
+                    <a onClick={() => goToRoute('/index/1')} className='webTitle'>
                                     圖書資訊系統
                     </a><br />登入
                   </p>
@@ -120,7 +125,7 @@ export default connect(
                   <Form.Item className="loginBtn" {...tailLayout}>
                     <Button type="primary" htmlType="submit">登入</Button>
                   </Form.Item>
-                  <p>還沒有會員？ <a href='/#/register'>去註冊</a></p>
+                  <p>還沒有會員？ <a onClick={() => goToRoute('/register')}>去註冊</a></p>
                 </Form>
               </Layout>:<div className="spin">
                 <Spin />
