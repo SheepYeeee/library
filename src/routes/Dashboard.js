@@ -72,44 +72,6 @@ export default connect(
       bookData: null
     };
 
-    // 假資料 欄
-    columns = [
-      {
-        title: "書名",
-        dataIndex: "title"
-      },
-      {
-        title: "作者",
-        dataIndex: "author",
-        sorter: {
-          compare: (a, b) => a.author - b.author
-        }
-      },
-      {
-        title: "出版日期",
-        dataIndex: "publication_date",
-        sorter: {
-          compare: (a, b) => a.publication_date - b.publication_date
-        }
-      },
-      {
-        title: "isbn",
-        dataIndex: "isbn",
-        sorter: {
-          compare: (a, b) => a.isbn - b.isbn
-        }
-      },
-      {
-        title: "操作",
-        dataIndex: "isbn",
-        render: (dataIndex) => <div className='actions' id={dataIndex}>
-          <a onClick={this.goBook} target="_blank" rel="noreferrer"><Button primary>查看</Button></a>
-          <Button className='btns' type="primary" onClick={() => this.showEditModal(dataIndex)}>編輯 </Button>
-          <Button className='btns' type="primary" danger onClick={() => this.showDeleteModal(dataIndex)}>刪除 </Button>
-        </div>
-      }
-    ];
-
     // 前往書籍
     goBook = (dataIndex) => {
       const { goToRoute } = this.props;
@@ -215,11 +177,42 @@ export default connect(
 
     render() {
       const {loading, isEditModalVisible, isDeleteModalVisible, isAddModalVisible, bookData} = this.state;
-      const {dashboardList} = this.props;
+      const {dashboardList, goToRoute} = this.props;
       let testData;
       if (dashboardList) {
         testData = dashboardList;
       }
+
+
+      // 假資料 欄
+      let columns = [
+        {
+          title: "書名",
+          dataIndex: "title"
+        },
+        {
+          title: "作者",
+          dataIndex: "author"
+        },
+        {
+          title: "出版日期",
+          dataIndex: "publication_date"
+        },
+        {
+          title: "isbn",
+          dataIndex: "isbn"
+        },
+        {
+          title: "操作",
+          dataIndex: "isbn",
+          render: (dataIndex) => <div className='actions' id={dataIndex}>
+            <a onClick={()=>goToRoute(`/book/${dataIndex}`)} target="_blank" rel="noreferrer"><Button primary>查看</Button></a>
+            <Button className='btns' type="primary" onClick={() => this.showEditModal(dataIndex)}>編輯 </Button>
+            <Button className='btns' type="primary" danger onClick={() => this.showDeleteModal(dataIndex)}>刪除 </Button>
+          </div>
+        }
+      ];
+
 
       return (
         <div id="dashboard">
@@ -233,7 +226,7 @@ export default connect(
             {
               !loading ?
                 <div className='contant'>
-                  <Table columns={this.columns} dataSource={testData} onChange={this.onChange}/>
+                  <Table columns={columns} dataSource={testData} onChange={this.onChange}/>
                 </div> : <div className="spin">
                   <Spin/>
                 </div>
